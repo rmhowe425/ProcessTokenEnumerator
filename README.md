@@ -3,7 +3,7 @@
 Active .dll injection will be incorporated in future updates
 
  This project is intended to be a part of a post exploitation framework.
-     <md-tab>-> Future work will include:<br /><md-tab>
+      Future work will include:<br /><md-tab>
           1) Process migration<br /><md-tab>
           2) Privilege escalation via named pipe impersonation<br /><md-tab>
           3) RAM dumping<br /><md-tab>
