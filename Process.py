@@ -13,12 +13,38 @@ class Process:
         @param proc: PSutil process object
     '''
     def __init__(self, proc):
-        self.name = proc.name()
-        self.pid = proc.pid
-        self.owner = proc.username()
-        self.priv = Privileges(self.pid)
+        self.name  = self.setName(proc.name())
+        self.pid   = self.setPID(proc.pid)
+        self.owner = self.setOwner(proc.username())
+        self.priv  = Privileges(self.pid)
         
+    '''
+        Sets the value of the process name
+        @param name: Human readable name assigned to a process
+    '''
+    def setName(self, name):
+        if not name:
+            raise TypeError
+        return name
 
+    '''
+        Sets the value of a process PID
+        @param pid: Job number of a process
+    '''
+    def setPID(self, pid):
+        if not pid:
+            raise TypeError
+        return pid
+
+    '''
+        Sets the value of the process owner
+        @param owner: User interacting with this process
+    '''
+    def setOwner(self, owner):
+        if not owner:
+            raise TypeError
+        return owner
+    
     '''
         Returns a Process object's PID
     '''

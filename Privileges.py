@@ -52,7 +52,11 @@ class Privileges:
         
         if privTuple:
             for i in privTuple:
-                priv_array.append(LookupPrivilegeName(None, i[0]))
+                priv = LookupPrivilegeName(None, i[0])
+                if not all(priv):
+                    continue
+                else:
+                    priv_array.append(priv)
         return priv_array
 
     def getTokenInformation(self):
