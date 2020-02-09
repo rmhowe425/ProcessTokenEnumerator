@@ -3,9 +3,12 @@
     @author Richard Howe
     Enumerates individual process tokens using WIN API function calls
 '''
-from os import getpid
-from Process import Process
-from psutil import process_iter, NoSuchProcess, AccessDenied, ZombieProcess  
+try:
+    from os import getpid
+    from Process import Process
+    from psutil import process_iter, NoSuchProcess, AccessDenied, ZombieProcess
+except:
+    print("Error importing a library, try pip installing psutil.\n")
     
 '''
     Check all running process privileges against self,
@@ -66,6 +69,7 @@ def main():
         if checkAndInject(i, c_proc):
             proc_injections.append(i)
     for i in proc_injections:
-        print "[*]Name: {}\n[*]PID: {}\n[*]Owner: {}\n\n".format(i.getName(), i.getPID(), i.getOwner())
+        output = "[*]Name: {}\n[*]PID: {}\n[*]Owner: {}\n\n".format(i.getName(), i.getPID(), i.getOwner())
+        print(output)
         
 main()

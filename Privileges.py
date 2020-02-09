@@ -1,7 +1,10 @@
-from pywintypes import FALSE
-from win32api import OpenProcess, GetCurrentProcess
-from win32con import TOKEN_ALL_ACCESS, PROCESS_ALL_ACCESS, PROCESS_QUERY_INFORMATION, PROCESS_VM_READ
-from win32security import OpenProcessToken, GetTokenInformation, TokenPrivileges, LookupPrivilegeName
+try:
+    from pywintypes import FALSE
+    from win32api import OpenProcess, GetCurrentProcess
+    from win32con import TOKEN_ALL_ACCESS, PROCESS_ALL_ACCESS, PROCESS_QUERY_INFORMATION, PROCESS_VM_READ
+    from win32security import OpenProcessToken, GetTokenInformation, TokenPrivileges, LookupPrivilegeName
+except:
+    print("Error importing libraries. Try pip installing win32api.\n")
     
 '''
     Class that manages and maintains an individual processes

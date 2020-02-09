@@ -1,5 +1,8 @@
-from ctypes import wintypes
-from Privileges import Privileges
+try:
+    from ctypes import wintypes
+    from Privileges import Privileges
+except:
+    print("Error importing libraries.\n")
 
 '''
     Class responsible for managing relevant Process Information.
