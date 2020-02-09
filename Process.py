@@ -1,6 +1,5 @@
-import ctypes
-from Privileges import Privileges
 from ctypes import wintypes
+from Privileges import Privileges
 
 '''
     Class responsible for managing relevant Process Information.
