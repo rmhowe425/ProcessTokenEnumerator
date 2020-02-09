@@ -27,8 +27,8 @@ def checkAndInject(victim, c_proc):
         # Do inject
     
     # Check for equivalent proc privs using list comprehension  
-   # elif not [item for item in v_privs if item not in c_privs]:
-        #inject = True
+    elif not [item for item in v_privs if item not in c_privs]:
+        inject = True
         # Do inject
 
     return inject
@@ -66,6 +66,6 @@ def main():
         if checkAndInject(i, c_proc):
             proc_injections.append(i)
     for i in proc_injections:
-        print "Name: {}\tPID: {}\tOwner: {}\n".format(i.getName(), i.getPID(), i.getOwner())
+        print "[*]Name: {}\n[*]PID: {}\n[*]Owner: {}\n\n".format(i.getName(), i.getPID(), i.getOwner())
         
 main()

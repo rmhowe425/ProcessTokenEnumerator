@@ -24,15 +24,12 @@ class Privileges:
     '''
     def setProcessToken(self, pid):
         proc_token = None
-        if not pid:
-            proc_token = None
-            
-        else:
-            try:
-                handle = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid)
-                proc_token = OpenProcessToken(handle, TOKEN_ALL_ACCESS)
-            except:
-                pass
+
+        try:
+            handle = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid)
+            proc_token = OpenProcessToken(handle, TOKEN_ALL_ACCESS)
+        except:
+            raise TypeError
         return proc_token
         
     '''
@@ -45,8 +42,10 @@ class Privileges:
         Returns contents stored within a process token
     '''
     def setTokenInformation(self, token):
-        if not self.process_token:
+        # Could not get a handle for process token (insufficient privs?)
+        if not token:
             return None
+        
         privTuple = GetTokenInformation(self.process_token, TokenPrivileges)
         priv_array = []
         
